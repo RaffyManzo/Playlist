@@ -1,16 +1,20 @@
-all: list.exe
+link: list.o song.o item-song.o playlist.o main.o 
+	gcc list.o song.o item-song.o playlist.o main.o -o playlist.exe
 
-list.exe: list.o item_int.o main.o
-	gcc -o list.exe list.o item_int.o main.o
-
-list.o: list.c list.h item.h
+list.o:
 	gcc -c list.c
 
-item_int.o: item_int.c item.h
-	gcc -c item_int.c
+song.o:
+	gcc -c song.c
 
-main.o: main.c list.h item.h
+item-song.o:
+	gcc -c item-song.c
+
+playlist.o:
+	gcc -c playlist.c
+
+main.o:
 	gcc -c main.c
 
-clean:
-	rm -f *.o list.exe
+clean: 
+	rm -f *.o playlist.exe
